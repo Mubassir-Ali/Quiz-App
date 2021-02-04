@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { QuizServices } from "./Services/QuizServices";
-import { QuizCard } from "./Components/QuizCard";
+import React, { useEffect, useState } from 'react';
+import { QuizServices } from './Services/QuizServices';
+import { QuizCard } from './Components/QuizCard';
+import './App.css'
 
-import { QuizType } from "./Types/Types";
+import { QuizType } from './Types/Types';
 
 function App() {
   const [quiz, setQuiz] = useState<QuizType[]>([]);
@@ -12,23 +13,25 @@ function App() {
     const fetchData = async () => {
       const Quizdata: QuizType[] = await QuizServices(5);
       setQuiz(Quizdata);
-
-      
-      
     };
 
     fetchData();
   }, []);
 
 
-  console.log(quiz);
+
+
+
   return (
     <div className="App">
+      {quiz.length > 0 ? <QuizCard
 
-      <QuizCard data={quiz}/>
-
-      </div>
-
+        answer={quiz[1].answer}
+        question={quiz[1].question}
+        options={quiz[1].options}
+      /> :
+        null}
+    </div>
   );
 }
 

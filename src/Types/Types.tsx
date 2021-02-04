@@ -19,3 +19,10 @@ export interface QuizType{
     options: string[]
 
 }
+
+// export interface QuestionPropsType{
+//   question:string;
+//   answer:string;
+//   options:string[];
+
+// }

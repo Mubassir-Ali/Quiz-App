@@ -1,35 +1,31 @@
-import React from 'react'
-import {QuizType} from './../Types/Types';
+import React, { useState } from 'react'
+import { QuestionPropsType } from './../Types/Types';
 
-
-
-export const QuizCard: React.FC<QuizType> = ({answer,question,options}) => {
-
-    if(!question){
-        <h2>Loading</h2>
+export const QuizCard: React.FC<QuestionPropsType> = ({ question, options, callback }) => {
+    const [selectedAns, setSelectedAns] = useState("")
+    const handleSelection = (e: any) => {
+        setSelectedAns(e.target.value)
     }
-    
-    console.log(question);
-    console.log(options);
-    console.log(answer);
-    
+
     return (
         <div className="question-container">
             <div className="question">
                 <h3>{question}</h3>
             </div>
-            <div className="options">
-                <ul>
-                {options.map((opt,index)=>{
-                    return (<li key={index}>{`${index+1}. ${opt}`}</li>)
-                })}
-
-                </ul>
-             
-            </div>
-            <div className="correct-answer">{`Answe: ${answer}`}</div>
-            
-            
+            <form onSubmit={(e: React.FormEvent<EventTarget>) => callback(e, selectedAns)}>
+                <div className="options">
+                    {options.map((opt, index) => {
+                        return (<div key={index}>
+                            <label className="radio">
+                                <input type="radio" name="opt" value={opt} checked={selectedAns === opt} onChange={handleSelection} required />
+                                {` ${opt}`}
+                            </label>
+                        </div>
+                        )
+                    })}
+                </div>
+                <input type="submit" />
+            </form>
         </div>
     )
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
 	margin: 0;
 	padding: 0;
@@ -29,3 +30,10 @@ body{
 .options ul {
 	list-style: none;
 }
+=======
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+>>>>>>> 493d74d986b07c0a3843d1d3acfc5be41b006a77

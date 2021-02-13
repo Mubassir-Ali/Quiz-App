@@ -22,9 +22,15 @@ export interface QuizType{
 }
 
 export interface QuestionPropsType{
-  question:string;  
+  question:string;
+  QNo:number;  
   options:string[];
   callback:(e:React.FormEvent<EventTarget>, userAns:string)=>void
  
 
+}
+
+export interface resultType{
+  total:number;
+  scores:number;
 }

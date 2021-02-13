@@ -22,7 +22,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: install node 
+      - name: sudo install node 
         uses: actions/setup-node@v2-beta
         with:
           node-version: 12     
@@ -31,13 +31,13 @@ jobs:
      # INSTALL YARN   
       - uses: borales/actions-yarn@v2.3.0
         with:         
-          cmd: install 
+          cmd: sudo install 
 
-      - name: build yarn
-        run: yarn build
+      - name: sudo build yarn
+        run: sudo yarn build
        
       - name: setup surge
-        run: npm install -global surge
+        run: sudo npm install -global surge
         
       - name: Execute Deployment with surge
         run: surge ./build quizmubassir.surge.sh --token ${{secrets.QUIZ_TOKEN}}

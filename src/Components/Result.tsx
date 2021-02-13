@@ -3,18 +3,13 @@ import {
 	Container,
 	Box,
 	Card,
-	CardContent,
+
 	makeStyles,
 	CardHeader,
 	CardActionArea,
 	Typography,
 	
-	RadioGroup,
-	FormControlLabel,
-	FormControl,
-	FormLabel,
-	Divider,
-	Button
+
 } from '@material-ui/core';
 import {resultType} from '../Types/Types'
 const useStyle = makeStyles((theme) => ({

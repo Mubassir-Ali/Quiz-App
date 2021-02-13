@@ -63,7 +63,7 @@ export const App = () => {
               options={quiz[currentStep].options}
           /> :
               <div className="loader">
-                  <img src="https://64.media.tumblr.com/5d20cb9d224eb97fab488a8ca5b38d33/tumblr_nsocqzECoE1sjmeczo1_540.gifv" />
+                  <h1>Loading ...</h1>
               </div>
           }
       </div>

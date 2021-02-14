@@ -11,7 +11,7 @@ export const App = () => {
   let [currentStep, setCurrentStep] = useState(0)
   let [score, setScore] = useState(0)
   let [showResult, setShowResult] = useState(false)
-  let totalQuestion=10
+  let totalQuestion=5
 
   useEffect(() => {
       const fetchData = async () => {
@@ -42,6 +42,16 @@ export const App = () => {
 
   }
 
+  const restart =(e: React.FormEvent<EventTarget>, restart:number)=>{
+      e.preventDefault()
+      setCurrentStep(0)
+      setShowResult(false)
+
+    console.log(restart)
+      
+      
+  }
+
   // if (showResult) {
 
   //     return (<div>
@@ -53,7 +63,7 @@ export const App = () => {
 
   return (
       <div>
-          {showResult? <Result scores={score} total={quiz.length}/>:
+          {showResult? <Result scores={score} total={quiz.length} callback={restart}/>:
           quiz.length > 0 ? <QuizCard
 
 
@@ -63,7 +73,7 @@ export const App = () => {
               options={quiz[currentStep].options}
           /> :
               <div className="loader">
-                  <h1>Loading ...</h1>
+                  <h1>Loading...</h1>
               </div>
           }
       </div>

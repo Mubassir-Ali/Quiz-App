@@ -1,17 +1,20 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {
 	Container,
 	Box,
 	Card,
-
 	makeStyles,
 	CardHeader,
 	CardActionArea,
 	Typography,
+	IconButton,
+	CardActions,
+	
 	
 
 } from '@material-ui/core';
 import {resultType} from '../Types/Types'
+import ReplayIcon from '@material-ui/icons/Replay';
 const useStyle = makeStyles((theme) => ({
 	root: {
 		minWidth: '100%',
@@ -27,12 +30,24 @@ const useStyle = makeStyles((theme) => ({
 	header: {
 		textAlign: 'center',
 		backgroundColor: theme.palette.primary.main,
+	},
+	replay:{
+		alignItems:"center",
+		justifyContent:"center"
 	}
 }));
 
 const Result = (props:resultType) => {
 	const classes = useStyle();
-    const {scores,total}=props
+    const {scores,total,callback}=props
+	const [replay, setReplay]=useState(total)
+
+	const handler =(e:any)=>{
+		setReplay(0)
+		console.log("click");
+		
+
+	}
 	return (
 		<React.Fragment>
 			<Container className={classes.root}>
@@ -44,6 +59,17 @@ const Result = (props:resultType) => {
 								<Typography variant="h6">{`${scores} Currect Answers out of ${total} Questions`} </Typography>
 							</div>
 						</CardActionArea>
+						<form onSubmit={(e:React.FormEvent<EventTarget>)=>callback(e,replay)}>
+						<CardActions className={classes.replay}>
+							<IconButton type="submit" onClick={handler}>
+								<ReplayIcon />
+							</IconButton>
+
+						</CardActions>
+
+						</form>
+					
+						
 					</Card>
 				</Box>
 			</Container>

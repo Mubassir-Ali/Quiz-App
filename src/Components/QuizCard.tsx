@@ -60,7 +60,8 @@ export const QuizCard = (props:QuestionPropsType) => {
                     <form onSubmit={(e:React.FormEvent<EventTarget>)=>callback(e,selectedAns)}>
                         <Card >
                             <CardActionArea>
-                                <CardHeader title="Quiz" subheader={`Question No. ${QNo+1}`} className={classes.header} />
+                                <CardHeader title="Quiz" className={classes.header} />
+                                <Typography className={classes.header}>{`Question No. ${QNo+1}`}</Typography>
                                 <div className={classes.pad}>
                                     <Typography variant="h6" >{question}</Typography>
                                     <FormLabel>Select one of the following</FormLabel>

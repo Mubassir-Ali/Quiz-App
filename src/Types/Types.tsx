@@ -33,4 +33,5 @@ export interface QuestionPropsType{
 export interface resultType{
   total:number;
   scores:number;
+  callback:(e:React.FormEvent<EventTarget>, restart:number)=>void
 }

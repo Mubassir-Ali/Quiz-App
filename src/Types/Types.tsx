@@ -1,3 +1,4 @@
+import React from 'react'
 export interface Todo {
   title: string;
   text: string;
@@ -18,4 +19,19 @@ export interface QuizType{
     answer:string;
     options: string[]
 
+}
+
+export interface QuestionPropsType{
+  question:string;
+  QNo:number;  
+  options:string[];
+  callback:(e:React.FormEvent<EventTarget>, userAns:string)=>void
+ 
+
+}
+
+export interface resultType{
+  total:number;
+  scores:number;
+  callback:(e:React.FormEvent<EventTarget>, restart:number)=>void
 }

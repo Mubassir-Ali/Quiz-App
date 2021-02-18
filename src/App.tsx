@@ -2,15 +2,23 @@ import React, { useEffect, useState } from "react";
 import { QuizServices } from "./Services/QuizServices";
 import { QuizCard } from "./Components/QuizCard";
 import { QuizType } from "./Types/Types";
-import "./App.css"
+import "./App.css";
 
 function App() {
   const [quiz, setQuiz] = useState<QuizType[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const Quizdata: QuizType[] = await QuizServices(5);
-      setQuiz(Quizdata);
+      // try{
+        const Quizdata: any = await QuizServices(5);
+        setQuiz(Quizdata);
+  
+
+      // }catch(err){
+      //   console.log(err);
+        
+      // }
+ 
     };
 
     fetchData();
@@ -18,7 +26,7 @@ function App() {
 
   console.log(quiz);
   return (
-    <div className="App" >     
+    <div className="App">
       {quiz.length ? (
         <QuizCard
           answer={quiz[0].answer}
@@ -28,7 +36,7 @@ function App() {
       ) : (
         <h2>Page Loading</h2>
       )}
-    </div >
+    </div>
   );
 }
 

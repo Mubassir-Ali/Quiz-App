@@ -17,7 +17,7 @@ export interface QuestionType{
 export interface QuizType{
     question: string;
     answer:string;
-    options: string[]
+    options: string[];
 
 }
 

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { QuizServices } from './Services/QuizServices';
 import { QuizCard } from './Components/QuizCard';
-import { QuizType,QuestionPropsType } from './Types/Types';
+import { QuizType } from './Types/Types';
 import Result from './Components/Result'
+
 
 
 
@@ -16,10 +17,10 @@ export const App = () => {
 
   useEffect(() => {
       const fetchData = async () => {
-          const Quizdata: any = await QuizServices(totalQuestion);
-          setQuiz(Quizdata);
+          
+            let Quizdata: any = await QuizServices(totalQuestion);
+            setQuiz(Quizdata);        
       };
-
 
       fetchData();
   }, []);
@@ -48,8 +49,7 @@ export const App = () => {
       e.preventDefault()
       setCurrentStep(0)
       setShowResult(false)
-      setScore(0)
-
+      setScore(0)    
     console.log(restart)
       
       
@@ -68,9 +68,10 @@ export const App = () => {
               question={quiz[currentStep].question}
               options={quiz[currentStep].options}
           /> :
-              <div className="loader">
-                  <h1>Loading...</h1>
-              </div>
+            <div className="loader">
+                <h1>Loading...</h1>
+            </div>
+          
           }
       </div>
   )
@@ -78,46 +79,3 @@ export const App = () => {
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function App() {
-//   const [quiz, setQuiz] = useState<QuizType[]>([]);
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const Quizdata: QuizType[] = await QuizServices(5);
-//       setQuiz(Quizdata);
-//     };
-
-//     fetchData();
-//   }, []);
-
-//   console.log(quiz);
-//   return (
-//     <div className="App" >     
-//       {quiz.length ? (
-//         <QuizCard
-//           answer={quiz[0].answer}
-//           question={quiz[0].question}
-//           options={quiz[0].options}
-//         />
-//       ) : (
-//         <h2>Page Loading</h2>
-//       )}
-//     </div >
-
-//   );
-// }
-
-// export default App;

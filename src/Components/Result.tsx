@@ -3,6 +3,7 @@ import {
 	Container,
 	Box,
 	Card,
+	Paper,
 	makeStyles,
 	CardHeader,
 	CardActionArea,
@@ -19,22 +20,36 @@ const useStyle = makeStyles((theme) => ({
 	root: {
 		minWidth: '100%',
 		minHeight: '100vh',
-		backgroundColor: theme.palette.grey[50]
+		position:"absolute",
+		backgroundColor: theme.palette.grey[300],
+		
 	},
 	pad: {
 		padding: theme.spacing(3),
-		backgroundColor: theme.palette.grey[100],
+		backgroundColor: theme.palette.grey[100],		
 		textAlign:"center",
 		
 	},
 	header: {
 		textAlign: 'center',
+		color: "white",
 		backgroundColor: theme.palette.primary.main,
 	},
 	replay:{
 		alignItems:"center",
 		justifyContent:"center"
-	}
+	},
+	layout: {
+		[theme.breakpoints.up("md")]: {
+		  margin: "6rem 5rem",
+		},
+		[theme.breakpoints.up("lg")]: {
+		  margin: "6rem 10rem",
+		},
+		[theme.breakpoints.down("sm")]: {
+		  marginTop: "10rem",
+		},
+	  },
 }));
 
 const Result = (props:resultType) => {
@@ -51,7 +66,7 @@ const Result = (props:resultType) => {
 	return (
 		<React.Fragment>
 			<Container className={classes.root}>
-				<Box px="20%" pt="15%">
+				<Paper className={classes.layout}>
 					<Card>
 						<CardActionArea>
 							<CardHeader title="Quiz Result" className={classes.header} />
@@ -71,7 +86,7 @@ const Result = (props:resultType) => {
 					
 						
 					</Card>
-				</Box>
+				</Paper>
 			</Container>
 		</React.Fragment>
 	);

@@ -30,3 +30,4 @@ this.addEventListener("fetch", (event) => {
       );
     }
   });
+
